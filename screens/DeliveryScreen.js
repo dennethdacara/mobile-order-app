@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image, SafeAreaView } from 'react-native'
 import React from 'react'
 import { selectRestaurant } from '../features/restaurantSlice';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native'; 
 import { useSelector } from 'react-redux';
 import { XMarkIcon } from 'react-native-heroicons/solid';
 import * as Progress from 'react-native-progress';
@@ -9,6 +9,12 @@ import * as Progress from 'react-native-progress';
 const DeliveryScreen = () => {
 
     const navigation = useNavigation();
+    const {
+        params: {
+            kot_num
+        }
+    } = useRoute();
+
     const restaurant = useSelector(selectRestaurant);
 
     return (
@@ -25,15 +31,13 @@ const DeliveryScreen = () => {
                 <View className="bg-white mx-5 my-2 rounded-md p-6 z-50 shadow-md">
                     <View className="flex-row justify-between mb-2">
                         <View>
-                            <Text className="text-lg font-bold">Order #123</Text>
+                            <Text className="text-lg font-bold">Order #{kot_num}</Text>
                             
                             <Text className="text-lg text-gray-400">Estimated Time</Text>
                             <Text className="text-4xl font-bold">15-20 Minutes</Text>
                         </View>
                         <Image
-                            source={{
-                                uri: "https://cdn-icons-png.flaticon.com/512/3448/3448102.png"
-                            }}
+                            source={require('../assets/delivery-icon.png')}
                             className="ml-2 h-20 w-20"
                         />
                     </View>

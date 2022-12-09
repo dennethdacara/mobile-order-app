@@ -16,6 +16,10 @@ const BasketScreen = () => {
     const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
     const dispatch = useDispatch();
 
+    const currencyFormat = (amount) => {
+        return '₱' + amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+
     useEffect(() => {
         // loop through items in the basket
         // create an object where by the key, if the key exists, then go ahead and push the item into that key
@@ -47,31 +51,21 @@ const BasketScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                {/* <View className="flex-row items-center space-x-4 px-4 py-3 bg-white my-5">
-                    <Image 
-                        source={{
-                            uri: "https://links.papareact.com/wru"
-                        }} 
-                        className="h-7 w-7 bg-gray-300 p-4 rounded-full"
-                    />
-                    <Text className="flex-1">Ready in 10-30 minute/s</Text>
-                </View> */}
-
                 <ScrollView className="divide-y divide-gray-200">
                     {Object.entries(groupedItemsInBasket).map(([key, items]) => (
                         <View key={key} className="flex-row items-center space-x-3 bg-white py-2 px-5">
                             <Text className="text-[#1B75BB]">{items.length} x</Text>
                             <Image
-                                source={{ uri: items[0]?.image }}
+                                source={items[0]?.image}
                                 className="h-12 w-12 rounded-full"
                             />
                             <Text className="flex-1">{items[0]?.name}</Text>
 
                             <Text className="text-gray-600">
-                                ₱{items[0]?.price}
+                                {currencyFormat(items[0]?.price)}
                             </Text>
 
-                            <TouchableOpacity
+                            {/* <TouchableOpacity
                                 onPress={() => dispatch(removeFromBasket({ id: key }))}
                             >
                                 <Text
@@ -79,7 +73,7 @@ const BasketScreen = () => {
                                 >
                                     Remove
                                 </Text>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                         </View>
                     ))}
                 </ScrollView>
@@ -88,14 +82,14 @@ const BasketScreen = () => {
                     <View className="flex-row justify-between">
                         <Text className="text-gray-400">Subtotal</Text>
                         <Text className="text-gray-400">
-                            ₱{basketTotal}
+                            {currencyFormat(basketTotal)}
                         </Text>
                     </View>
 
                     <View className="flex-row justify-between">
                         <Text>Order Total</Text>
                         <Text className="font-extrabold">
-                            ₱{basketTotal}
+                            {currencyFormat(basketTotal)}
                         </Text>
                     </View>
 

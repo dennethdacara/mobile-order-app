@@ -18,8 +18,10 @@ const PreparingOrderScreen = () => {
 
     useEffect(() => {
         setTimeout(() => {
-            navigation.navigate('Delivery');
-        }, 2000);
+            navigation.navigate('Delivery', {
+                kot_num: Math.floor(Math.random() * (9999 - 1000 + 1) + 1000)
+            });
+        }, 4000);
     }, []);
 
     return (

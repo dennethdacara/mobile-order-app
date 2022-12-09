@@ -14,6 +14,7 @@ import FeaturedRow from "../components/FeaturedRow";
 
 import {
     UserIcon,
+    UserCircleIcon,
     ChevronDownIcon,
     MagnifyingGlassIcon,
     AdjustmentsHorizontalIcon
@@ -39,8 +40,7 @@ const HomeScreen = () => {
                         {/* <ChevronDownIcon size={20} color="#1B75BB" /> */}
                     </Text>
                 </View>
-
-                <UserIcon size={30} color="#1B75BB" />
+                <UserCircleIcon size={30} color="#1B75BB" />
             </View>
 
             {/* Search */}
@@ -49,7 +49,7 @@ const HomeScreen = () => {
                     <MagnifyingGlassIcon color="gray" size={20} />
                     <TextInput placeholder="Restaurants and cuisines" keyboardType="default" />
                 </View>
-                <AdjustmentsHorizontalIcon color="#1B75BB" />
+                {/* <AdjustmentsHorizontalIcon color="#1B75BB" /> */}
             </View>
 
             {/* Body */}
@@ -60,20 +60,18 @@ const HomeScreen = () => {
                 }}
             >
                 {/* Categories */}
+                <View>
+                    <View className="mt-4 flex-row items-center justify-between px-4">
+                        <Text className="font-bold text-lg">Categories</Text>
+                    </View>
+                </View>
                 <Categories />
 
                 {/* Featured Rows */}
                 <FeaturedRow
                     id="1"
                     title="Featured"
-                    description="Paid placements from our partners"
-                    featuredCategory="featured"
-                />
-
-                <FeaturedRow
-                    id="2"
-                    title="Tasty Discounts"
-                    description="Everyone's been enjoying these juicy discounts!"
+                    description="Discover restaurants near you"
                     featuredCategory="featured"
                 />
 

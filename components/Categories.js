@@ -13,30 +13,24 @@ const Categories = () => {
       showsHorizontalScrollIndicator={false}
     >
       {/* CategoryCard */}
-
       <CategoryCard
-        title="Category 1"
-        imgUrl="https://mgi-deliveryportal.s3.amazonaws.com/Regular%20Whole%20Fried%20Chicken%20(Top)%20PWA%20DESKTOP%20680x510%2001.jpg" 
+        title="Offers"
+        imgUrl={require('../assets/categories/offers.webp')} 
       />
       
       <CategoryCard 
-        title="Category 2" 
-        imgUrl="https://mgi-deliveryportal.s3.amazonaws.com/Crispy%20Pata%20PWA%20DESKTOP%20680x510%2001.jpg" 
+        title="" 
+        imgUrl={require('../assets/categories/category-2.jpg')}
       />
 
       <CategoryCard 
-        title="Category 3"
-        imgUrl="https://mgi-deliveryportal.s3.amazonaws.com/PWA%20-%20All-Beef%20Kare-Kare.png" 
+        title=""
+        imgUrl={require('../assets/categories/burgers.jpg')}
       />
 
       <CategoryCard
-        title="Category 4"
-        imgUrl="https://mgi-deliveryportal.s3.amazonaws.com/PWA%20-%20Pancit%20Canton.png" 
-      />
-
-      <CategoryCard 
-        title="Category 5"
-        imgUrl="https://mgi-deliveryportal.s3.amazonaws.com/Sizzling%20Tofu%20-%20PWA%20Desktop%20-%20680x510.png" 
+        title=""
+        imgUrl={require('../assets/categories/category-4.png')}
       />
     </ScrollView>
   )

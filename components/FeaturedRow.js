@@ -8,7 +8,7 @@ const FeaturedRow = ({ title, description, featuredCategory }) => {
     <View>
         <View className="mt-4 flex-row items-center justify-between px-4">
             <Text className="font-bold text-lg">{title}</Text>
-            <ArrowRightIcon color="#1B75BB" />
+            {/* <ArrowRightIcon color="#1B75BB" /> */}
         </View>
 
         <Text className="text-xs text-gray-500 px-4">
@@ -26,12 +26,12 @@ const FeaturedRow = ({ title, description, featuredCategory }) => {
             {/* Restaurant Cards */}
             <RestaurantCard 
                 id={123}
-                imgUrl="https://mangan.ph/uploads/merchants/1187.jpg"
+                imgUrl={require('../assets/restaurants/doyles-diner.webp')} 
                 title="Doyle's Diner"
                 rating={4.5}
-                genre="Japanese"
-                address="123 Test St"
-                short_description="Test Description"
+                genre="Fine Dining"
+                address="6045 R. Palma St, Makati"
+                short_description="Doyle's Diner is a family-friendly restaurant that serves breakfast, lunch and dinner and has a rich history and is involed in the local community."
                 dishes={[]}
                 long={20}
                 lat={0}
@@ -39,12 +39,12 @@ const FeaturedRow = ({ title, description, featuredCategory }) => {
 
             <RestaurantCard 
                 id={123}
-                imgUrl="https://mangan.ph/uploads/merchants/1187.jpg"
-                title="Doyle's Diner"
+                imgUrl={require('../assets/restaurants/maxs-restaurant.jpg')} 
+                title="Max's Restaurant"
                 rating={4.5}
-                genre="Japanese"
-                address="123 Test St"
-                short_description="Test Description"
+                genre="Fine Dining"
+                address="Makati, PH"
+                short_description="The House That Fried Chicken Built."
                 dishes={[]}
                 long={20}
                 lat={0}

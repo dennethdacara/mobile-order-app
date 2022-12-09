@@ -9,6 +9,10 @@ const BasketIcon = () => {
     const navigation = useNavigation();
     const basketTotal = useSelector(selectBasketTotal);
 
+    const currencyFormat = (amount) => {
+        return '₱' + amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+
     if (items.length === 0) return null;
 
     return (
@@ -22,7 +26,7 @@ const BasketIcon = () => {
                 </Text>
                 <Text className="flex-1 text-white font-extrabold text-lg text-center">View Basket</Text>
                 <Text className="text-lg text-white font-extrabold">
-                    ₱{basketTotal}
+                    { currencyFormat(basketTotal) }
                 </Text>
             </TouchableOpacity>
         </View>

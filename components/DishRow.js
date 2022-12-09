@@ -28,6 +28,10 @@ const DishRow = ({
         dispatch(removeFromBasket({ id }));
     }
 
+    const currencyFormat = (amount) => {
+        return '₱' + amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+    }
+
     return (
         <>
             <TouchableOpacity
@@ -41,7 +45,7 @@ const DishRow = ({
                         <Text className="text-lg mb-1">{name}</Text>
                         <Text className="text-gray-400">{short_description}</Text>
                         <Text className="text-gray-400 mt-2">
-                            ₱{price}
+                            {currencyFormat(price)}
                         </Text>
                     </View>
                     <View> 
@@ -50,7 +54,7 @@ const DishRow = ({
                                 borderWidth: 1,
                                 borderColor: '#F3F3F4'
                             }}
-                            source={{uri: image}}
+                            source={image}
                             className="h-20 w-20 bg-gray-300 p-4"
                         />
                     </View>
