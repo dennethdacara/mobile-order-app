@@ -91,7 +91,6 @@ const HomeScreen = () => {
                     featuredCategory="featured"
                 />
 
-
             </ScrollView>
         </SafeAreaView>
     )

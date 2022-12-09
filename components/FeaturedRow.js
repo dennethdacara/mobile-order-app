@@ -27,7 +27,7 @@ const FeaturedRow = ({ title, description, featuredCategory }) => {
             <RestaurantCard 
                 id={123}
                 imgUrl="https://mangan.ph/uploads/merchants/1187.jpg"
-                title="Yo! Sushi"
+                title="Doyle's Diner"
                 rating={4.5}
                 genre="Japanese"
                 address="123 Test St"
@@ -40,7 +40,7 @@ const FeaturedRow = ({ title, description, featuredCategory }) => {
             <RestaurantCard 
                 id={123}
                 imgUrl="https://mangan.ph/uploads/merchants/1187.jpg"
-                title="Yo! Sushi"
+                title="Doyle's Diner"
                 rating={4.5}
                 genre="Japanese"
                 address="123 Test St"
