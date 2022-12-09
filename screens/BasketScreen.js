@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../features/restaurantSlice';
-import { removeFromBasket, selectBasketItems } from '../features/basketSlice';
+import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../features/basketSlice';
 import SafeViewAndroid from "../components/SafeViewAndroid";
 import { XCircleIcon } from 'react-native-heroicons/solid';
 
@@ -12,6 +12,7 @@ const BasketScreen = () => {
     const navigation = useNavigation();
     const restaurant = useSelector(selectRestaurant);
     const items = useSelector(selectBasketItems);
+    const basketTotal = useSelector(selectBasketTotal);
     const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
     const dispatch = useDispatch();
 
@@ -30,7 +31,7 @@ const BasketScreen = () => {
     return (
         <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="flex-1 bg-white">
             <View className="flex-1 bg-gray-100">
-                <View className="p-5 border-b border-[#1B75BB] bg-white shadow-xs"> 
+                <View className="p-5 border-b border-[#1B75BB] bg-white shadow-xs mb-3"> 
                     <View>
                         <Text className="text-lg font-bold text-center">Basket</Text>
                         <Text className="text-center text-gray-400">
@@ -46,7 +47,7 @@ const BasketScreen = () => {
                     </TouchableOpacity>
                 </View>
 
-                <View className="flex-row items-center space-x-4 px-4 py-3 bg-white my-5">
+                {/* <View className="flex-row items-center space-x-4 px-4 py-3 bg-white my-5">
                     <Image 
                         source={{
                             uri: "https://links.papareact.com/wru"
@@ -54,10 +55,7 @@ const BasketScreen = () => {
                         className="h-7 w-7 bg-gray-300 p-4 rounded-full"
                     />
                     <Text className="flex-1">Ready in 10-30 minute/s</Text>
-                    {/* <TouchableOpacity>
-                        <Text className="text-[#1B75BB]">Change</Text>
-                    </TouchableOpacity> */}
-                </View>
+                </View> */}
 
                 <ScrollView className="divide-y divide-gray-200">
                     {Object.entries(groupedItemsInBasket).map(([key, items]) => (
@@ -78,7 +76,6 @@ const BasketScreen = () => {
                             >
                                 <Text
                                     className="text-[#1B75BB] text-xs"
-                                    
                                 >
                                     Remove
                                 </Text>
@@ -87,8 +84,24 @@ const BasketScreen = () => {
                     ))}
                 </ScrollView>
 
-                <View>
-                    <View></View>
+                <View className="p-5 bg-white mt-5 space-y-4">
+                    <View className="flex-row justify-between">
+                        <Text className="text-gray-400">Subtotal</Text>
+                        <Text className="text-gray-400">
+                            ₱{basketTotal}
+                        </Text>
+                    </View>
+
+                    <View className="flex-row justify-between">
+                        <Text>Order Total</Text>
+                        <Text className="font-extrabold">
+                            ₱{basketTotal}
+                        </Text>
+                    </View>
+
+                    <TouchableOpacity onPress={() => navigation.navigate('PreparingOrderScreen')} className="rounded-lg bg-[#1B75BB] p-4">
+                        <Text className="text-center text-white text-lg font-bold">Place Order</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
