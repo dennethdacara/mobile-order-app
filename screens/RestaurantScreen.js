@@ -51,56 +51,56 @@ const RestaurantScreen = () => {
 
     const dishes = [
         {
-            id: 1,
+            id: 3497,
             name: 'Wagyu Steak',
             short_description: "If you're looking for a place that serves good steak at such a reasonable price.",
             price: 1500.00,
             image: require('../assets/products/wagyu-steak.jpg')
         },
         {
-            id: 2,
+            id: 4586,
             name: 'Sinigang na Baboy (M)',
             short_description: "Sinigang na Baboy is the ultimate comfort food! Made with pork ribs, vegetables, and tamarind-flavored broth, it’s hearty and delicious on its own or served with steamed rice.",
             price: 355.00,
             image: require('../assets/products/sinigang-na-baboy.png')
         },
         {
-            id: 3,
+            id: 4587,
             name: 'House Crispy Sisig',
             short_description: "Doyle's House Crispy Sisig is extra crunchy, malinamnam, and, with a little bit of sili, may extra sipa that fans of spicy food will surely enjoy.",
             price: 270.00,
             image: require('../assets/products/house-crispy-sisig.jpg')
         },
         {
-            id: 4,
+            id: 12968,
             name: "Doyle's Lechon Belly",
             short_description: "Lechon belly is best-served kamayan style with a side of sinangag (garlic rice), pork BBQ skewers, and some tangy atchara.",
             price: 500.00,
             image: require('../assets/products/crispy-pata.jpg')
         },
         {
-            id: 5,
+            id: 5766,
             name: 'Aglio-Olio',
             short_description: "Spaghetti aglio e olio is a traditional Italian pasta dish from Naples. It is a typical dish of Neapolitan cuisine and is widely popular.",
             price: 250.00,
             image: require('../assets/products/aglio.jpg')
         },
         {
-            id: 6,
+            id: 3494,
             name: 'Choc. Moist Cake (Sliced)',
             short_description: "Layers of rich moist chocolate cakes with chocolate fudge icing.",
             price: 250.00,
             image: require('../assets/products/moist-cake.jpg')
         },
         {
-            id: 7,
+            id: 15909,
             name: "Doyle's Strawberry Cake (Sliced)",
             short_description: "This refreshing strawberry cake recipe uses strawberry puree and strawberry gelatin to make this kid-tested and approved celebration cake.",
             price: 250.00,
             image: require('../assets/products/strawberry-cake.jpg')
         },
         {
-            id: 8,
+            id: 15962,
             name: 'Banana Cake Slice',
             short_description: "Banana cake is lighter and is made much similar to the traditional butter cake by creaming butter and sugar.",
             price: 150.00,

@@ -2,10 +2,11 @@ import { View, Text, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'r
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectRestaurant } from '../features/restaurantSlice';
+import { selectRestaurant, setKotNum } from '../features/restaurantSlice';
 import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../features/basketSlice';
 import SafeViewAndroid from "../components/SafeViewAndroid";
 import { XCircleIcon } from 'react-native-heroicons/solid';
+import axios from 'axios';
 
 const BasketScreen = () => {
 
@@ -19,6 +20,55 @@ const BasketScreen = () => {
     const currencyFormat = (amount) => {
         return '₱' + amount.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
     }
+    
+    async function placeOrder() {
+
+        let productsArr = [];
+        {Object.entries(groupedItemsInBasket).map(([key, items]) => (
+            productsArr.push({
+                product_id: key,
+                qty: items.length,
+                price: items[0]?.price
+            })
+        ))};
+
+        const data = {
+            products: productsArr,
+            service: "Take-out",
+            service_channel: "",
+            brand_id: "46",
+            location_id: "33",
+            pax_count: 1,
+            tax: 0,
+            service_charge_amount: 0,
+            other_charges_amt: 0,
+            sub_total: basketTotal,
+            total: basketTotal,
+            dynamic_taxes: [],
+            more_details: "",
+            terminal_id: "1",
+            billed: true,
+            customer_info: {
+                name: "John Doyle",
+                accountID: "3621873621",
+                address: "6045 R Palma Street, Poblacion, Makati City"
+            }
+        };
+
+        axios.post('http://192.168.1.2:8000/mobile/order', {
+            headers: {
+                'Content-Type': "application/json",
+                'Accept': "application/json",
+            },
+            data
+        }).then(function (response) {
+            console.log(response.data);
+            dispatch(setKotNum(response.data));
+            navigation.navigate('PreparingOrderScreen');
+        }).catch(function (error) {
+            console.log(error);
+        });
+    }
 
     useEffect(() => {
         // loop through items in the basket
@@ -29,8 +79,11 @@ const BasketScreen = () => {
         }, {});
 
         setGroupedItemsInBasket(groupedItems);
+    }, []);
 
-    }, [items]);
+    // <TouchableOpacity onPress={() => navigation.navigate('PreparingOrderScreen')} className="rounded-lg bg-[#1B75BB] p-4">
+    //     <Text className="text-center text-white text-lg font-bold">Place Order</Text>
+    // </TouchableOpacity>
 
     return (
         <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="flex-1 bg-white">
@@ -93,7 +146,7 @@ const BasketScreen = () => {
                         </Text>
                     </View>
 
-                    <TouchableOpacity onPress={() => navigation.navigate('PreparingOrderScreen')} className="rounded-lg bg-[#1B75BB] p-4">
+                    <TouchableOpacity onPress={() => placeOrder()} className="rounded-lg bg-[#1B75BB] p-4">
                         <Text className="text-center text-white text-lg font-bold">Place Order</Text>
                     </TouchableOpacity>
                 </View>
