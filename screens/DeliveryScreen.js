@@ -9,12 +9,6 @@ import * as Progress from 'react-native-progress';
 const DeliveryScreen = () => {
 
     const navigation = useNavigation();
-    // const {
-    //     params: {
-    //         kot_num
-    //     }
-    // } = useRoute();
-
     const restaurant = useSelector(selectRestaurant);
     const kotNum = useSelector(selectKotNum);
 

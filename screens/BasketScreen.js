@@ -23,6 +23,10 @@ const BasketScreen = () => {
     
     async function placeOrder() {
 
+        // const baseUrl = 'http://192.168.254.123:8000'; // DEN PC
+        // const baseUrl = 'http://192.168.254.141:8000'; // MEL PC
+        const baseUrl = 'http://192.168.97.207:8000';
+
         let productsArr = [];
         {Object.entries(groupedItemsInBasket).map(([key, items]) => (
             productsArr.push({
@@ -55,7 +59,7 @@ const BasketScreen = () => {
             }
         };
 
-        axios.post('http://192.168.1.2:8000/mobile/order', {
+        axios.post(`${baseUrl}/mobile/order`, {
             headers: {
                 'Content-Type': "application/json",
                 'Accept': "application/json",

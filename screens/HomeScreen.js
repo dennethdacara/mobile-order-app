@@ -6,11 +6,13 @@ import {
     TextInput,
     ScrollView,
 } from 'react-native';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { useNavigation } from "@react-navigation/native";
 import SafeViewAndroid from "../components/SafeViewAndroid";
 import Categories from "../components/Categories";
 import FeaturedRow from "../components/FeaturedRow";
+import { clearBasket } from '../features/basketSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
     UserIcon,
@@ -22,12 +24,18 @@ import {
 
 const HomeScreen = () => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+
     useLayoutEffect(() => {
-      navigation.setOptions({
-        // headerTitle: "Home",
-        headerShown: false
-      });
+        navigation.setOptions({
+            // headerTitle: "Home",
+            headerShown: false
+        });
     }, []);
+
+    // useEffect(() => {
+    //     dispatch(clearBasket());
+    // }, []);
 
     return (
         <SafeAreaView style={SafeViewAndroid.AndroidSafeArea} className="bg-white pt-5">
@@ -53,7 +61,7 @@ const HomeScreen = () => {
             </View>
 
             {/* Body */}
-            <ScrollView 
+            <ScrollView
                 className="bg-gray-100"
                 contentContainerStyle={{
                     paddingBottom: 100
